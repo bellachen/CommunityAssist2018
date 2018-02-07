@@ -9,6 +9,7 @@ namespace CommunityAssist2018.Controllers
 {
     public class RegistrationController : Controller
     {
+        //CommunityAssist2018 db = new CommunityAssist2018();
         // GET: Registration
         public ActionResult Index()
         {
@@ -22,11 +23,11 @@ namespace CommunityAssist2018.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index([Bind(Include = "NewPersonLastName,NewPersonFirstName,NewPersonEmail,NewPersonPhone,NewPersonPlainPassword,NewPersonApartment,NewPersonStreet,NewPersonCity,NewPersonState,NewPersonZipcode")]NewPerson r)
+        public ActionResult Index([Bind(Include = "NewPersonLastName,NewPersonFirstName,NewPersonEmail,NewPersonPlainPassword,NewPersonApartment,NewPersonStreet,NewPersonCity,NewPersonState,NewPersonZipcode,NewPersonPhone")]NewPerson r)
         {
             CommunityAssist2017Entities db = new CommunityAssist2017Entities(); 
 
-            int result = db.usp_Register(r.NewPersonLastName, r.NewPersonFirstName, r.NewPersonEmail, r.NewPersonPhone, r.NewPersonPlainPassword, r.NewPersonApartment, r.NewPersonStreet, r.NewPersonCity, r.NewPersonState, r.NewPersonZipcode);
+            int result = db.usp_Register(r.NewPersonLastName, r.NewPersonFirstName, r.NewPersonEmail, r.NewPersonPlainPassword, r.NewPersonApartment, r.NewPersonStreet, r.NewPersonCity, r.NewPersonState, r.NewPersonZipcode, r.NewPersonPhone);
 
             if (result != -1)
             {
